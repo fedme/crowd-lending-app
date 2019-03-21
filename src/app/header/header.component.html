@@ -1,0 +1,7 @@
+<h1>CrowdLendingApp</h1>
+<ul>
+  <li><a [routerLink]="['/projects']">Projects</a></li>
+  <li *ngIf="!api.loggedIn"><a [routerLink]="['/login']">Login</a></li>
+  <li *ngIf="api.loggedIn">Hi, {{api.userProfile?.email}}. 
+    (<a [routerLink]="['/projects']" (click)="api.logOut()">logout</a>)</li>
+</ul>

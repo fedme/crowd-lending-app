@@ -1,0 +1,19 @@
+<h2>{{project?.name}}</h2>
+<h3>By {{project?.owner?.firstName}} {{project?.owner?.lastName}}</h3>
+<p>{{project?.description}}</p>
+<p>{{ project?.fundedPercentage}}% founded</p>
+<ul>
+  <li>Requested amount: {{project?.requestedAmount}}</li>
+  <li>Collected amount: {{project?.collectedAmount}}</li>
+</ul>
+
+<br>
+<h2>Invest in this project</h2>
+<div *ngIf="api.loggedIn">
+  <form>
+    Amount: <input type="number" name="amount" [(ngModel)]="amount">
+    <button type="button" (click)="invest()">Invest</button>
+    <p>{{resultMessage}}</p>
+  </form>
+</div>
+<div *ngIf="!api.loggedIn">Please log in to invest in thus project</div>

@@ -1,0 +1,15 @@
+<h2>Projects</h2>
+
+<article *ngFor="let project of projects">
+  
+  <h3><a [routerLink]="['/projects', project.id]">{{project?.name}}</a></h3>
+
+  <h4>by {{project?.owner?.firstName}} {{project?.owner?.lastName}}</h4>
+
+  <p><p>Requested {{project?.requestedAmount}} and it's now {{ project?.fundedPercentage}}% founded</p>
+
+  <p>{{project?.description | truncate:[35]}}</p>
+
+  <br>
+</article>
+
