@@ -2,8 +2,8 @@
 Expects the running API project at the following URL: https://localhost:44342
 
 ## Mock Users
-There are two mock users that you can use:
 - dave@test.local Password123!
+- sarah@test.local Password123!
 - john@test.local Password123!
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.

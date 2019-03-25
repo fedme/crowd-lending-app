@@ -20,7 +20,9 @@ export class ApiService {
   private async checkIfAlreadyLoggedIn() {
 
     // retrieve access token from session storage
-    if (sessionStorage.getItem('access_token') == null) return;
+    if (sessionStorage.getItem('access_token') == null) {
+      return;
+    }
     this.accessToken = sessionStorage.getItem('access_token');
 
     // try to use token and check if it is still valid
@@ -74,6 +76,7 @@ export class ApiService {
     this.loggedIn = false;
     this.accessToken = '';
     this.userProfile = null;
+    sessionStorage.removeItem('access_token');
   }
 
   private async getUserProfile() {
@@ -109,9 +112,7 @@ export class ApiService {
       })
     };
 
-    const body = {
-      amount
-    };
+    const body = { amount };
 
     const res: any = await this.http.post(`${this.apiUrl}/projects/${projectId}/investments`, body, httpOptions).toPromise();
     console.log('invest in project response', res);

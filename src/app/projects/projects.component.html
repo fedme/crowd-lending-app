@@ -2,86 +2,44 @@
 
     <h1>Projects</h1>
 
-    <div [fxLayout]="'row wrap'" fxLayoutGap="30px" class="container">
+    <div [fxLayout]="'row wrap'" fxLayoutGap="30px">
 
-      <mat-card fxFlex class="" *ngFor="let project of projects">
-    
-          <mat-card-header>
-              <div mat-card-avatar [style.background-image]="'url(' + project?.owner?.avatarSrc + ')'" class="project-header-avatar">
-              </div>
-              <mat-card-title [routerLink]="['/projects', project.id]">
-                {{project?.name}}
-              </mat-card-title>
-              <mat-card-subtitle>{{project?.owner?.fullName}}</mat-card-subtitle>
-          </mat-card-header>
-    
-          <img mat-card-image [routerLink]="['/projects', project.id]" src="{{project?.coverImageSrc}}" alt="">
-    
-          <mat-card-content>
-              <p>{{project?.requestedAmount}}&euro;</p>
-              <p>{{ project?.fundedPercentage}}% founded</p>
-              <p>
-                  {{project?.description | truncate:[35]}}
-              </p>
-          </mat-card-content>
-    
-          <mat-card-actions align="end">
-              <button mat-button [routerLink]="['/projects', project.id]">Learn More</button>
-          </mat-card-actions>
-    
-      </mat-card>
-    
+        <!-- TODO: extract to independent component -->
+        <mat-card fxFlex class="" *ngFor="let project of projects">
+
+            <mat-card-header>
+                <div mat-card-avatar [style.background-image]="'url(' + project?.owner?.avatarSrc + ')'"
+                    class="project-header-avatar">
+                </div>
+                <mat-card-title [routerLink]="['/projects', project.id]">
+                    {{project?.name}}
+                </mat-card-title>
+                <mat-card-subtitle>{{project?.owner?.fullName}}</mat-card-subtitle>
+            </mat-card-header>
+
+            <img mat-card-image [routerLink]="['/projects', project.id]" src="{{project?.coverImageSrc}}" alt="">
+
+            <mat-card-content>
+
+                <mat-progress-bar mode="determinate" value="{{ project?.fundedPercentage}}"></mat-progress-bar>
+
+                <div id="textbox">
+                    <p class="alignleft">{{ project?.fundedPercentage}}% founded</p>
+                    <p class="alignright">{{project?.requestedAmount}}&euro;</p>
+                    <div style="clear: both;"></div>
+                </div>
+
+                <p>
+                    {{project?.description | truncate:[35]}}
+                </p>
+            </mat-card-content>
+
+            <mat-card-actions align="end">
+                <button mat-button [routerLink]="['/projects', project.id]">Learn More</button>
+            </mat-card-actions>
+
+        </mat-card>
+
     </div>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <mat-card class="example-card">
-    <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-        <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-        </p>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-    </mat-card-actions>
-</mat-card> -->
-
-
-
-
-<!-- <h2>Projects</h2>
-
-<article *ngFor="let project of projects">
-  
-  <h3><a [routerLink]="['/projects', project.id]">{{project?.name}}</a></h3>
-
-  <h4>by {{project?.owner?.firstName}} {{project?.owner?.lastName}}</h4>
-
-  <p><p>Requested {{project?.requestedAmount}} and it's now {{ project?.fundedPercentage}}% founded</p>
-
-  <p>{{project?.description | truncate:[35]}}</p>
-
-  <br>
-</article> -->
-

@@ -1,0 +1,41 @@
+.container {
+    margin-top: 40px;
+    padding-bottom: 50px;
+}
+
+.project-card {
+    margin-top: 20px;
+    padding-bottom: 30px;
+}
+
+.invest-card {
+    margin-top: 20px;
+    max-width: 310px;
+    max-height: 310px;
+
+    mat-card-content {
+        padding: 8px;
+        padding-top: 15px;
+    }
+}
+  
+.project-header-avatar {
+    background-size: cover;
+}
+
+.cover {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    min-height: 280px;
+    max-height: 300px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.result-message {
+    padding: 7px;
+    border-radius: 3px;
+    background-color: blanchedalmond;
+}

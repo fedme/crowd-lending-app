@@ -51,6 +51,11 @@ export class ProjectComponent implements OnInit, OnDestroy {
 
     } catch (res) {
       console.log('error when investing in project', res);
+
+      if (res.status === 401) {
+        this.resultMessage = 'Authentication issue. Please reload the page and retry.';
+      }
+
       // TODO: uniform error messages structure server side
       this.resultMessage = res.error.Amount != null ? res.error.Amount : res.error;
     }
