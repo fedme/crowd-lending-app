@@ -24,7 +24,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       console.log('page params', params);
-      this.id = params.id; // (+) converts string 'id' to a number
+      this.id = params.id;
       this.retrieveProject();
       this.resultMessage = '';
     });
@@ -41,16 +41,20 @@ export class ProjectComponent implements OnInit, OnDestroy {
   }
 
   public async invest() {
+
     try {
+
       const res = await this.api.investInProject(this.id, this.amount);
       console.log('result of investing in project', res);
       this.resultMessage = `You have succesfully invested ${this.amount} in the project!`;
-    } catch (error) {
-      console.log('error when investing in project', error);
-      this.resultMessage = error.error.Amount != null ? error.error.Amount : error.error.message;
+      this.retrieveProject();
+
+    } catch (res) {
+      console.log('error when investing in project', res);
+      // TODO: uniform error messages structure server side
+      this.resultMessage = res.error.Amount != null ? res.error.Amount : res.error;
     }
 
-    this.retrieveProject();
   }
 
 }

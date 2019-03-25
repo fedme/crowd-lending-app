@@ -14,6 +14,31 @@ export class ApiService {
   public userProfile: UserProfile;
 
   constructor(private http: HttpClient) {
+    this.checkIfAlreadyLoggedIn();
+  }
+
+  private async checkIfAlreadyLoggedIn() {
+
+    // retrieve access token from session storage
+    if (sessionStorage.getItem('access_token') == null) return;
+    this.accessToken = sessionStorage.getItem('access_token');
+
+    // try to use token and check if it is still valid
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.accessToken}`
+      })
+    };
+
+    try {
+      const res: any = await this.http.get(`${this.apiUrl}/userinfo`, httpOptions).toPromise();
+      this.loggedIn = true;
+      this.userProfile = new UserProfile(res);
+
+    } catch (error) {
+      console.log(error);
+      this.logOut();
+    }
   }
 
   public async getAccessToken(username: string, password: string) {
@@ -45,7 +70,7 @@ export class ApiService {
 
   }
 
-  public logout() {
+  public logOut() {
     this.loggedIn = false;
     this.accessToken = '';
     this.userProfile = null;

@@ -5,10 +5,10 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ProjectComponent } from './project/project.component';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
+  {path: 'user', component: LoginComponent},
   {path: 'projects', component: ProjectsComponent},
-  {path: 'projects/:id', component: ProjectComponent }
-  // {path: '', redirectTo: '/login', pathMatch: 'full'}
+  {path: 'projects/:id', component: ProjectComponent },
+  {path: '', redirectTo: '/projects', pathMatch: 'full'}
 ];
 
 @NgModule({

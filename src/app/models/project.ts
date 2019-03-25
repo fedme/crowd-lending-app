@@ -1,6 +1,7 @@
 import { User } from './user';
 
 export class Project {
+
     collectedAmount: number;
     coverImageSrc: string;
     createdAt: Date;

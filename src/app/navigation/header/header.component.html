@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+
+  <div fxHide.gt-xs>
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+
+  <div class="mainNav">
+    <a routerLink="/">CrowdLendingApp</a>
+    <!-- <a routerLink="/projects">Projects</a> -->
+  </div>
+
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+
+      <!-- <li>
+        <a [routerLink]="['/projects']">Projects</a>
+      </li> -->
+
+      <li *ngIf="!api.loggedIn">
+        <a [routerLink]="['/user']">Login</a>
+      </li>
+
+      <li *ngIf="api.loggedIn">      
+
+        <mat-menu #userMenu="matMenu">
+            <button mat-menu-item [routerLink]="['/user']">{{api.userProfile?.email}}</button>
+          <button mat-menu-item [routerLink]="['/projects']" (click)="api.logOut()">Logout</button>
+        </mat-menu>
+
+        <a [matMenuTriggerFor]="userMenu" style="cursor: pointer">
+          <img src="{{api.userProfile?.picture}}" style="max-width: 40px; border-radius: 50%">
+        </a>
+
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

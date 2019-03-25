@@ -1,0 +1,16 @@
+.container {
+    margin-top: 40px;
+}
+
+.project-card {
+    max-width: 300px;
+    margin-top: 20px;
+}
+  
+.project-header-avatar {
+    background-size: cover;
+}
+
+.mat-card-image, mat-card-title {
+    cursor: pointer;
+}
