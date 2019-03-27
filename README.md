@@ -1,5 +1,5 @@
 # CrowdLending Angular app example
-Expects the running API project at the following URL: https://localhost:44342
+Expects the running API project (https://github.com/fedme/CrowdLending) at the following URL: https://localhost:44342
 
 ## Mock Users
 - dave@test.local Password123!
